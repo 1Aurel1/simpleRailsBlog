@@ -1,0 +1,114 @@
+<header>
+	<nav style="background-color: #202020" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container no-padding">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="img">
+                    <%= image_tag 'no.gif' %>
+                </div>
+                <a class="navbar-brand" href="/posts">I club</a><p  class="njoftues"><%= notice %></p>
+            <p  class="njoftues"><%= alert %></p>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse right navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <%= link_to "Krijo nje postim !!!", new_post_path %>
+                    </li>
+                    <% if user_signed_in? %>
+                        <li class="dil" >
+                           <a href="users/<%= current_user.id %>" style="color: #B0B1B8; padding-right: 0;" class="email"><%= image_tag current_user.avatar.url %><i>(<%= current_user.email %>)</i> <%= link_to "Dilni", destroy_user_session_path, method: :delete %></a>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to "Hyr", new_user_session_path %>|
+                        </li>
+                        <li>
+                            <%= link_to "Rregjistrou", new_user_registration_path %>
+                        </li>
+                    <% end %>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="backimg">
+    	<%= image_tag @user.backgroud_image.url %>
+    </div>
+    <div class="info_head">
+    	
+    	<div class="text">
+    		<h2><%= @user.username %> </h2>
+    	</div>
+    	<% if current_user.id == @user.id %>
+    	<ul>
+    		<li><%= link_to "Settings", edit_user_registration_path %></li>
+
+    	</ul>
+    	<% end %>
+    	
+    	<div class="profilepic">
+    	<%= image_tag @user.avatar.url %>
+    	</div>
+    </div>
+    
+</header>
+<section>
+	<div class="user_post">
+		<% @posts.each do |post| %>
+
+			<% if @user.id == post.user_id %>
+				<div class="post-preview">
+			        <a href="post.html">
+			            <h1 class="post-title"> </h1>
+			                <%= link_to post.title, post %> <i>-</i>
+			                <% if post.user != nil %>
+			                	<% if post.user.username != nil %>
+			                		<i><%= link_to post.user.username, post.user %></i>
+			                	<% else %>
+			                 		<i><%= link_to post.user.email, post.user %></i>
+			                 	<% end %>
+			            	<% end %>
+			            </h2>
+			            <h3 class="post-subtitle">
+			            	<% if post.image? %>
+			            	<%= image_tag post.image.url %> 
+			            	<% else %>
+			            		
+			            	<% end %>
+			                <%= truncate post.content %>
+			            </h3>
+			        </a>
+			        <p class="post-meta">Posted by  <%= time_ago_in_words post.created_at %> ago - <% if post.anglisht == true %>
+			        		Anglisht
+			        	<% end %>
+			        	<% if post.tik == true %>
+			        		Tik
+			        	<% end %>
+			        	<% if post.letersi == true %>
+			        		Letersi
+			        	<% end %>
+			        	<% if post.matematik == true %>
+			        		Matemetik
+			        	<% end %>
+			        	<% if post.histori == true %>
+			        		Histori
+			        	<% end %></p>
+			    </div>
+			    <hr>
+			<% end %>
+		<% end %>
+	</div>
+</section>
+

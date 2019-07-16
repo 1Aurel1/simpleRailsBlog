@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container no-padding">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="img">
+                    <%= image_tag 'no.gif' %>
+                </div>
+                <a class="navbar-brand" href="/posts">I club</a><p  class="njoftues"><%= notice %></p>
+            <p  class="njoftues"><%= alert %></p>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse right navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <%= link_to "Krijo nje postim !!!", new_post_path %>
+                    </li>
+                    <% if user_signed_in? %>
+                        <li class="dil" >
+                           <a href="users/<%= current_user.id %>" style="color: #B0B1B8; padding-right: 0;" class="email"><%= image_tag current_user.avatar.url %><i>(<%= current_user.email %>)</i> <%= link_to "Dilni", destroy_user_session_path, method: :delete %></a>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to "Hyr ose Rregjistrou", new_user_session_path %>|
+                        </li>
+                    <% end %>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>"Isa Boletini"</h1>
+                        <hr class="small">
+                        <span class="subheading">Gjithcka fillon me nje hap te vogel !!!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="kategorite">
+            <div class="kategori">
+                <h3><%= link_to "Anglisht", categories_anglisht_path %>
+                </h3>
+                <h3><%= link_to "Histori", categories_histori_path %>
+                </h3>
+                <h3><%= link_to "Letersi", categories_letersi_path %>
+                </h3>
+                <h3><%= link_to "Matematik", categories_matematik_path %>
+                </h3>
+                <h3><%= link_to "Tik", categories_tik_path %>
+                </h3>
+                <h3><%= link_to "Projekte", categories_projekte_path %>
+                </h3>
+                <h3><%= link_to "Revista", categories_revista_path %>
+                </h3>
+            </div>          
+        </div>
+    </header>
+    <% if admin_signed_in? %>
+    <div id="adm_dil">
+       <p> <%= current_admin.email %> - <%= link_to "Dilni", destroy_admin_session_path, method: :delete %></p>
+    </div>
+    
+    <%end%>

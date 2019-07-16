@@ -1,0 +1,103 @@
+<div class="container">
+  <%= form_for @post, :html => { :multipart => true } do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <h4>Video(embed)</h4>
+    <%= f.text_area :iframe %>
+  </div>
+  <ul class="lloji_postit">
+    <li class="chech">
+      <%= f.label :anglisht %><br>
+      <%= f.check_box :anglisht %>
+    </li>
+    <li class="chech">
+      <%= f.label :tik %><br>
+      <%= f.check_box :tik %>
+    </li>
+    <li class="chech">
+      <%= f.label :matematik %><br>
+      <%= f.check_box :matematik %>
+    </li>
+    <li class="chech">
+      <%= f.label :letersi %><br>
+      <%= f.check_box :letersi %>
+    </li>
+ 
+    <li class="chech">
+      <%= f.label :histori %><br>
+      <%= f.check_box :histori %>
+    </li>
+   <li class="chech">
+    <%= f.label :reviste %><br>
+    <%= f.check_box :reviste %>
+  </li>
+  <li class="check">
+    <%= f.label :projekt %><br>
+    <%= f.check_box :projekt %>
+  </li>
+  </ul> 
+<div class="img_upload">
+  
+</div>
+  <ul>
+  <li>
+    <%= f.file_field :image %>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <h4>
+          E madhe
+        </h4><br>
+        <%= f.check_box :full %>
+      </li>
+      <li>
+      <h4>Mesatare</h4><br>
+        <%= f.check_box :medium %>
+      </li>
+      <li>
+        <h4>
+          Logo
+        </h4><br>
+        <%= f.check_box :litle %>
+      </li>
+    </ul>
+  </li>
+  </ul>
+  
+
+  <h3>Shto me shume</h3>
+  <div id="mores">
+    <%= f.fields_for :mores do |more| %>
+      <%= render 'more_fields', f: more %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Shto', f, :mores %>
+      </div>
+    
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>

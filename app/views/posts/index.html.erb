@@ -1,0 +1,58 @@
+<%= render "all/header" %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<% @posts.each do |post| %>
+			
+				<div class="post-preview">
+			        <a href="post.html">
+			            <h1 class="post-title">
+			                <%= link_to post.title, post %> <i>-</i>
+			                <% if post.user != nil %>
+			                	<% if post.user.username != nil %>
+			                		<i><%= link_to post.user.username, post.user %></i>
+			                	<% else %>
+			                 		<i><%= link_to post.user.email, post.user %></i>
+			                 	<% end %>
+			            	<% end %>
+			            </h2>
+			            <h3 class="post-subtitle">
+			            	<% if post.image? %>
+			            	<%= image_tag post.image.url %> 
+			            	<% else %>
+			            		
+			            	<% end %>
+			                <%= truncate post.content %>
+			            </h3>
+			        </a>
+			        <p class="post-meta">Posted by  <%= time_ago_in_words post.created_at %> ago - <% if post.anglisht == true %>
+			        		Anglisht
+			        	<% end %>
+			        	<% if post.tik == true %>
+			        		Tik
+			        	<% end %>
+			        	<% if post.letersi == true %>
+			        		Letersi
+			        	<% end %>
+			        	<% if post.matematik == true %>
+			        		Matemetik
+			        	<% end %>
+			        	<% if post.histori == true %>
+			        		Histori
+			        	<% end %></p>
+			    </div>
+			    <hr>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div style="width: 970px; margin:auto; text-align:center;">
+	<div class="pd">
+		<%= paginate @posts %>
+	</div>
+		
+
+</div>
+
+
+<%= render "all/footer" %>

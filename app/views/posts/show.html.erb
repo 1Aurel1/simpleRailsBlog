@@ -1,0 +1,168 @@
+<%= render "all/header" %>
+<% if @post.reviste != true %>
+<div class="container">
+
+<% if @post.full == true %>
+	<div class="center img-style">
+	<style type="text/css">
+	.img-style img{
+		width: 100%;
+		height: 250px;
+	}
+	</style>
+	<p id="notice"><%= notice %></p>
+	<%= image_tag @post.image.url %>
+</div>
+<% end %>
+<% if @post.medium == true %>
+	<div class="center img-style">
+	<style type="text/css">
+	.img-style img{
+			width: 40%;
+	}
+	</style>
+	<p id="notice"><%= notice %></p>
+	<%= image_tag @post.image.url %>
+</div>
+<% end %>
+
+	
+<div class="show-text show">
+	<% if @post.litle == true %>
+	<i><div class="center img-style">
+	<style type="text/css">
+	.img-style img{
+		width: 10%;
+		height: 10%;
+		float: left;
+	}
+	.show i {
+		margin-top: 5px;
+	}
+	</style>
+	<p id="notice"><%= notice %></p>
+	<%= image_tag @post.image.url %>
+</div>
+<% end %><h1><%= @post.title %></h1></i>
+
+<p><%= @post.content.html_safe %></p>
+<% if @post.iframe != nil %>
+	<% if @post.reviste || @post.projekt == true %>
+		<style type="text/css">
+			.reviste iframe {
+				width: 185%;
+				margin-left: -20px;
+				height: 800px;
+			}
+		</style>
+		<div class="reviste">
+			<%= @post.iframe.html_safe %> 
+		</div>
+	<% else %>
+	<%= @post.iframe.html_safe %> 
+	<% end %>
+<% end %>
+
+<div class="more">
+	<% @post.mores.each do |more| %>
+		<h3><%= more.title2 %></h3>
+		<p><%= more.content2 %></p>
+		<%= more.iframe2.html_safe %> 
+		<%= image_tag more.more_image.url %>
+
+	<% end %>
+<h2>Comment</h2>
+<% @post.comments.each do |comment| %>
+	<h2><%= comment.user.email %></h2>
+	<h3><%= comment.text %></h3>
+	<p><%= time_ago_in_words comment.created_at %> ago </p>
+	<% if current_user == @post.user || admin_signed_in? || current_user == comment.user %>
+	<p><%= link_to "Delete comment", [@post, comment], method: :delete, data: {confirm: "A jeni i sigurte ???"}%></p>
+	<% end %>
+<% end %>
+<%= form_for [@post, @post.comments.build] do |f| %>
+<div class="field">
+    <%= f.text_field :text %>
+  </div>
+
+
+
+</div>
+<p><%= f.submit "Komento" %></p>
+<% end %>
+</div>
+
+<div class="center">
+	<p>
+<i class="left" style="margin-top: -10px;">
+	<%= link_to "", posts_path, :class => "fa fa fa-chevron-circle-left fa-3x" %>
+</i>
+<i class="right">
+<% if current_user == @post.user || admin_signed_in? %>
+
+<% if current_user == @post.user %>
+<%= link_to "", edit_post_path(@post), :class => "fa fa-pencil-square-o fa-2x" %>
+<% end %>
+
+<%= link_to "", @post, :class => "fa fa-trash-o fa-2x", method: :delete, data: { confirm: 'Are you sure?' }  %>
+<% end %></i>
+</p>
+
+</div>
+
+</div>
+<% elsif @post.reviste == true%>
+	<div class="revista-conteiner">
+		<div class="revista-text">
+			<h1 id="titulli">
+				<%= @post.title %>
+			</h1>
+			<p id="content">
+				<%= @post.content %>
+			</p>
+			
+		</div>
+		<div class="revista-frame">
+			<%= @post.iframe.html_safe %>
+		</div>
+	</div>
+	<h2>Komento</h2>
+<% @post.comments.each do |comment| %>
+	<h2><%= comment.user.email %></h2>
+	<h3><%= comment.text %></h3>
+	<p><%= time_ago_in_words comment.created_at %> ago </p>
+	<% if current_user == @post.user || admin_signed_in? || current_user == comment.user %>
+	<p><%= link_to "Delete comment", [@post, comment], method: :delete, data: {confirm: "A jeni i sigurte ???"}%></p>
+	<% end %>
+<% end %>
+<%= form_for [@post, @post.comments.build] do |f| %>
+<div class="field">
+    <%= f.text_field :text %>
+  </div>
+
+
+
+</div>
+<p><%= f.submit "Komento" %></p>
+<% end %>
+</div>
+
+<div class="center">
+	<p>
+<i class="left" style="margin-top: -10px;">
+	<%= link_to "", posts_path, :class => "fa fa fa-chevron-circle-left fa-3x" %>
+</i>
+<i class="right">
+<% if current_user == @post.user || admin_signed_in? %>
+
+<% if current_user == @post.user %>
+<%= link_to "", edit_post_path(@post), :class => "fa fa-pencil-square-o fa-2x" %>
+<% end %>
+
+<%= link_to "", @post, :class => "fa fa-trash-o fa-2x", method: :delete, data: { confirm: 'Are you sure?' }  %>
+<% end %></i>
+</p>
+
+</div>
+<% end %>
+<%= render "all/footer" %>

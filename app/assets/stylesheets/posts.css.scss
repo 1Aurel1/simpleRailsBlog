@@ -1,0 +1,206 @@
+.revista-conteiner {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+.revista-frame iframe{
+	width: 100%;
+	min-height: 500px;
+}
+.revista-text {
+	text-align: center;
+}
+
+
+
+
+.field input{
+	width: 50%;
+	height: 40px;
+	border-radius: 15px;
+	box-shadow: #006699 2px 5px 8px;
+}
+.field textarea {
+	width: 50%;
+	min-height: 50px;
+	border-radius: 15px;
+	box-shadow: #006699 2px 5px 8px;
+}
+.img_upload ul {
+	width: 50%;
+	height: 250px;
+}
+.img_upload ul li {
+	list-style: none;
+	width: 50%;
+	float: left;
+	background-color: grey;
+}
+.post_image input#post_image{
+width: 200px;
+height:200px;
+content: 'Fotoja';
+}
+.img_upload ul li ul li {
+	width: 100%;
+	height: 33%;
+}
+.img_upload ul li ul li h4 {
+	padding: 0;
+	margin: 0;
+}
+.admimg {
+	height:200px;
+	width: 100%;
+}
+.admimg img {
+	width: 100px;
+	margin: 0 auto;
+	padding: 20px;
+	float: left;
+}
+.admimg h2 {
+	padding-top: 20px;
+}
+.admlogin {
+	width: 300px;
+	height: 500px;
+	margin: 20px auto;
+	background-image: image-url("admlogin.gif");
+
+	border-radius: 5px;
+}
+.infoadm {
+	width: 80%;
+	margin: 0 auto;
+}
+.input1 {
+	padding: 15px 0 15px 0;
+} 
+input[type="submit"]{
+  background-color: #d85055 !important;
+  border:none !important;
+  padding: 4px 20px 4px 20px;
+  border-radius: 20px;
+  color: white;
+}
+.action1{
+	padding-top: 40px;
+	width: 40%;
+	margin: 0 auto;
+
+}
+@media only screen and (min-width: 768px) {
+	.show-text{
+	margin-left: 18%;
+	}
+	.center i {
+	margin-left: 16%;
+
+	}
+	.show {
+		width: 64%;
+	}
+	.show img {
+	width: 60%;
+	}
+	.show iframe {
+	width: 60%;
+}
+}
+.show img {
+	width: 100%;
+}
+.show iframe {
+	width: 100%;
+}
+body {
+	background-image: image-url('topo_bg.png');
+	background-size: 100%;
+}
+.kategori {
+	text-align: center;
+}
+
+#center {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.intro-header {
+	background-image: image-url('isa-back.gif');
+	height: 300px;
+}
+.left {
+	float: left;
+	padding: 0 15px 0 15px;
+}
+#adm_dil {
+	text-align: center;
+}
+#adm_dil p {
+	margin-left: 26%;
+	width: 48%;
+	padding: 5px 10px 5px 10px;
+	background-color: #337ab7;
+	color: white;
+	font-size: 24px;
+	border-radius: 15px;
+	text-decoration: none;
+}
+#adm_dil p a{
+	padding: 5px 10px 5px 10px;
+	background-color: #ff0033;
+	color: white;
+	font-size: 24px;
+	border-radius: 15px;
+	text-decoration: none;
+}
+#adm_dil a:hover {
+	padding: 10px 15px 10px 15px;
+	font-size: 26px;
+}
+.post-subtitle img{
+	width: 100px;
+	height: 100px;
+}
+.center {
+	text-align: center;
+}
+
+.post-title i {
+	color: #808080;
+	font-size: 20px;
+}
+h3.post-subtitle {
+	color: #58585C !important;
+	font-size: 20px;
+	font-weight: 400;
+}
+.njoftues {
+	padding-top: 20px; 
+	margin: 0;
+	width: 150px;
+}
+p.njoftues {
+	color: green !important;
+	font-size: 14px;
+	font-family: italic;
+	font-weight: 700;
+}
+.no-padding {
+	width: 100% !important;
+}
+.disabled {
+	display: inline-block;
+}
+.dil a {
+	float: left;
+	margin-top:-2px;
+}
+footer {
+	background-color: #D7D8E0;
+
+}
