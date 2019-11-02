@@ -15,7 +15,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rails_12factor', group: :production
 gem 'paperclip'
-gem 'devise', '~> 3.5', '>= 3.5.2'
+gem 'devise', '~> 4.7'
 gem 'kaminari'
 gem "paperclip-dropbox"
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
