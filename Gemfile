@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rake', '~> 11.1', '>= 11.1.1'
+gem 'rake', '~> 12.3'
 gem 'coffee-script-source', '1.8.0'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
